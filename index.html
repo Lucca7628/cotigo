@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Convite de Aniversário</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+	    width: 90vw;
+        }
+        #emoji {
+            position: fixed;
+            cursor: pointer;
+
+            width: 15vw; /* Tamanho do emoji ajustado proporcionalmente */
+            max-width: 120px; /* Define um tamanho máximo */
+            height: auto;
+        }
+        #convite {
+            display: none;
+            position: absolute;
+            max-width: 90%;
+            max-height: 90%;
+        }
+    </style>
+</head>
+<body>
+    <img id="emoji" src="https://raw.githubusercontent.com/Lucca7628/cotigo/refs/heads/main/LUCCA.jpg" alt="Emoji">
+    <img id="convite" src="https://raw.githubusercontent.com/Lucca7628/cotigo/refs/heads/main/Aniversario-do-Lucca.jpg" alt="Convite de Aniversário">
+    
+    <script>
+        let tentativas = 0;
+        const emoji = document.getElementById("emoji");
+        const convite = document.getElementById("convite");
+
+        // Função para mover o emoji de maneira aleatória, garantindo que ele fique dentro da tela
+        function moverEmoji() {
+            const maxX = window.innerWidth - emoji.offsetWidth; // Garantir que o emoji não ultrapasse a largura da tela
+            const maxY = window.innerHeight - emoji.offsetHeight; // Garantir que o emoji não ultrapasse a altura da tela
+            
+            const randomX = Math.random() * maxX;  // Gera uma posição aleatória dentro do limite
+            const randomY = Math.random() * maxY;  // Gera uma posição aleatória dentro do limite
+            
+            emoji.style.transform = `translate(${randomX}px, ${randomY}px)`; // Aplica o movimento
+        }
+
+        // Função de clique
+        function handleClick() {
+            tentativas++;
+            if (tentativas >= 4) {
+                emoji.style.display = "none";
+                convite.style.display = "block";
+            } else {
+                moverEmoji();
+            }
+        }
+
+        // Suporte a clique e toque
+        emoji.addEventListener("click", handleClick);
+        emoji.addEventListener("touchend", handleClick);
+
+        // Inicia o movimento aleatório
+        moverEmoji();
+    </script>
+</body>
+</html>
