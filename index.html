@@ -1,27 +1,42 @@
-```html <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo de Link</title>
+    <title>Exemplo de Link com Gatinhos e Corações</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #f7f7f7;
+            text-align: center;
         }
         #content {
-            text-align: center;
             font-size: 24px;
             color: #333;
         }
         a {
             text-decoration: none;
-            color: blue;
+            color: #ff6347;
             font-weight: bold;
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffebcd;
+            border-radius: 10px;
+        }
+        img {
+            max-width: 150px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        #heart {
+            font-size: 36px;
+            color: red;
         }
     </style>
 </head>
@@ -29,14 +44,21 @@
     <div id="content">
         <!-- Link para clicar -->
         <a href="#" onclick="mostrarMensagem()">Clique Aqui</a>
+        <br>
+        <!-- Imagem de gatinho -->
+        <img id="gatinho" src="https://placekitten.com/200/300" alt="Gatinho Fofo">
+        <div id="heart">❤️</div>
     </div>
 
     <script>
-        // Função para mostrar a mensagem "Eu te amo"
+        // Função para mostrar a mensagem "Eu te amo" com um gatinho e coração
         function mostrarMensagem() {
-            // Substitui o conteúdo do elemento com a mensagem
-            document.getElementById('content').innerHTML = 'Eu te amo';
+            // Substitui o conteúdo do elemento com a mensagem e imagens
+            document.getElementById('content').innerHTML = 'Eu te amo! 😻';
+            document.getElementById('gatinho').src = "https://placekitten.com/300/400"; // Muda a imagem do gatinho
+            document.getElementById('heart').innerHTML = '💖💖💖'; // Adiciona mais corações
         }
     </script>
 </body>
 </html>
+
