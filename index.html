@@ -46,10 +46,10 @@
             
             if (isMobile) {
                 // Para dispositivos móveis, limitamos a área a um tamanho de smartphone
-                return { maxWidth: 375, maxHeight: 667 }; // Exemplo para uma tela de smartphone média
+                return { maxWidth: 300, maxHeight: 500 }; // Limita ainda mais a área para o movimento do emoji
             } else {
-                // Para desktops, usamos a tela inteira
-                return { maxWidth: window.innerWidth, maxHeight: window.innerHeight };
+                // Para desktops, usamos a tela inteira, mas com uma margem para evitar que o emoji desapareça
+                return { maxWidth: window.innerWidth - 150, maxHeight: window.innerHeight - 150 }; // Área limitada para desktop
             }
         }
 
