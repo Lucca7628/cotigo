@@ -39,12 +39,24 @@
         const emoji = document.getElementById("emoji");
         const convite = document.getElementById("convite");
 
-        // Dimensões típicas de um smartphone (ajustado para uma área de 375x667px)
-        const maxWidth = 375; // Largura de um smartphone típico
-        const maxHeight = 667; // Altura de um smartphone típico
+        // Função para calcular as dimensões da área disponível
+        function getAreaMaxima() {
+            // Verifica se estamos em um dispositivo móvel ou desktop
+            const isMobile = window.innerWidth <= 768;  // Considerando 768px como o limite para dispositivos móveis
+            
+            if (isMobile) {
+                // Para dispositivos móveis, limitamos a área a um tamanho de smartphone
+                return { maxWidth: 375, maxHeight: 667 }; // Exemplo para uma tela de smartphone média
+            } else {
+                // Para desktops, usamos a tela inteira
+                return { maxWidth: window.innerWidth, maxHeight: window.innerHeight };
+            }
+        }
 
-        // Função para mover o emoji de maneira aleatória, garantindo que ele fique dentro da área do smartphone
+        // Função para mover o emoji de maneira aleatória, garantindo que ele fique dentro da área disponível
         function moverEmoji() {
+            const { maxWidth, maxHeight } = getAreaMaxima(); // Obtém a área máxima dependendo do dispositivo
+
             const maxX = maxWidth - emoji.offsetWidth; // Garantir que o emoji não ultrapasse a largura da área
             const maxY = maxHeight - emoji.offsetHeight; // Garantir que o emoji não ultrapasse a altura da área
             
