@@ -1,88 +1,42 @@
-<!DOCTYPE html>
+```html <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Convite de Aniversário</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Link</title>
     <style>
         body {
-            background-color: black;
-            margin: 0;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            width: 100vw;
+            background-color: #f4f4f4;
         }
-        #emoji {
-            position: fixed;
-            cursor: pointer;
-            width: 15vw; /* Tamanho do emoji ajustado proporcionalmente */
-            max-width: 120px; /* Define um tamanho máximo */
-            height: auto;
+        #content {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
         }
-        #convite {
-            display: none;
-            position: absolute;
-            max-width: 90%;
-            max-height: 90%;
+        a {
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <img id="emoji" src="https://raw.githubusercontent.com/Lucca7628/cotigo/refs/heads/main/LUCCA.jpg" alt="Emoji">
-    <img id="convite" src="https://raw.githubusercontent.com/Lucca7628/cotigo/refs/heads/main/Aniversario-do-Lucca.jpg" alt="Convite de Aniversário">
-    
+    <div id="content">
+        <!-- Link para clicar -->
+        <a href="#" onclick="mostrarMensagem()">Clique Aqui</a>
+    </div>
+
     <script>
-        let tentativas = 0;
-        const emoji = document.getElementById("emoji");
-        const convite = document.getElementById("convite");
-
-        // Função para calcular as dimensões da área disponível
-        function getAreaMaxima() {
-            // Verifica se estamos em um dispositivo móvel ou desktop
-            const isMobile = window.innerWidth <= 768;  // Considerando 768px como o limite para dispositivos móveis
-            
-            if (isMobile) {
-                // Para dispositivos móveis, limitamos a área a um tamanho de smartphone
-                return { maxWidth: 300, maxHeight: 500 }; // Limita ainda mais a área para o movimento do emoji
-            } else {
-                // Para desktops, usamos a tela inteira, mas com uma margem para evitar que o emoji desapareça
-                return { maxWidth: window.innerWidth - 150, maxHeight: window.innerHeight - 150 }; // Área limitada para desktop
-            }
+        // Função para mostrar a mensagem "Eu te amo"
+        function mostrarMensagem() {
+            // Substitui o conteúdo do elemento com a mensagem
+            document.getElementById('content').innerHTML = 'Eu te amo';
         }
-
-        // Função para mover o emoji de maneira aleatória, garantindo que ele fique dentro da área disponível
-        function moverEmoji() {
-            const { maxWidth, maxHeight } = getAreaMaxima(); // Obtém a área máxima dependendo do dispositivo
-
-            const maxX = maxWidth - emoji.offsetWidth; // Garantir que o emoji não ultrapasse a largura da área
-            const maxY = maxHeight - emoji.offsetHeight; // Garantir que o emoji não ultrapasse a altura da área
-            
-            const randomX = Math.random() * maxX;  // Gera uma posição aleatória dentro do limite
-            const randomY = Math.random() * maxY;  // Gera uma posição aleatória dentro do limite
-            
-            emoji.style.transform = `translate(${randomX}px, ${randomY}px)`; // Aplica o movimento
-        }
-
-        // Função de clique
-        function handleClick() {
-            tentativas++;
-            if (tentativas >= 4) {
-                emoji.style.display = "none";
-                convite.style.display = "block";
-            } else {
-                moverEmoji();
-            }
-        }
-
-        // Suporte a clique e toque
-        emoji.addEventListener("click", handleClick);
-        emoji.addEventListener("touchend", handleClick);
-
-        // Inicia o movimento aleatório
-        moverEmoji();
     </script>
 </body>
 </html>
